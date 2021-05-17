@@ -20,11 +20,12 @@
 
 
 [[Start!]]</tw-passagedata><tw-passagedata pid="3" name="Random players" tags="" position="585,280" size="100,100">Which type of boardgames you want to play?
-(set: $players to &quot;random players&quot;)
+(set: $players to &quot;random&quot;)
 [[Strategy]]
 [[Thematic]]
 [[Random type]]
-(set: $playerComment to (either:&quot;It is a little difficult...&quot;,&quot;friends are much important than the boardgames itself!&quot;))</tw-passagedata><tw-passagedata pid="4" name="0（only yourself）" tags="" position="134,273" size="100,100">Which type of boardgames you want to play?
+(set: $playerComment to (either:&quot;It is a little difficult...&quot;,&quot;friends are much important than the boardgames itself!&quot;))
+</tw-passagedata><tw-passagedata pid="4" name="0（only yourself）" tags="" position="133,273" size="100,100">Which type of boardgames you want to play?
 (set: $players to &quot;0&quot;)
 [[Strategy]]
 [[Thematic]]
@@ -35,7 +36,7 @@
 [[Thematic]]
 [[Family/party]]
 [[Random type]]
-(set: $playerComment to (either:&quot;normal choice!&quot;))</tw-passagedata><tw-passagedata pid="6" name="&gt;4" tags="" position="428,282" size="100,100">Which type of boardgames you want to play?
+(set: $playerComment to (either:&quot;normal choice!&quot;))</tw-passagedata><tw-passagedata pid="6" name="&gt;4" tags="" position="429,283" size="100,100">Which type of boardgames you want to play?
 (set: $players to &quot;&gt;4&quot;)
 [[Strategy]]
 [[Thematic]]
@@ -48,7 +49,7 @@
 [[&gt;90 mins]]
 [[Random time]]
 (set:$typeComment to (either:&quot;keep thinking!&quot;, &quot;You must be precise!&quot;))</tw-passagedata><tw-passagedata pid="8" name="Thematic" tags="" position="263,416" size="100,100">How long would you like to take this game for each time?
-(set: $type to &quot;Thematic&quot;)
+(set: $type to &quot;thematic&quot;)
 [[&lt;30 mins]]
 [[30-90 mins]]
 [[&gt;90 mins]]
@@ -58,40 +59,43 @@
 [[&lt;30 mins]]
 [[30-90 mins]]
 [[Random time]]
-(set:$typeComment to (either:&quot;enjoy it!&quot;, &quot;are you ready to break your friendship lol&quot;))</tw-passagedata><tw-passagedata pid="10" name="Random type" tags="" position="548,420" size="100,100">How long would you like to take this game for each time?
-(set: $type to &quot;random type&quot;)
+(set:$typeComment to (either:&quot;enjoy it!&quot;, &quot;are you ready to break your friendship lol&quot;))</tw-passagedata><tw-passagedata pid="10" name="Random type" tags="" position="549,419" size="100,100">How long would you like to take this game for each time?
+(set: $type to &quot;random&quot;)
 [[&lt;30 mins]]
 [[30-90 mins]]
 [[&gt;90 mins]]
 [[Random time]]
-(set:$typeComment to (either:&quot;Do you really like boardgame...? Go out and find something fun!&quot;))</tw-passagedata><tw-passagedata pid="11" name="&lt;30 mins" tags="" position="79,605" size="100,100">#Result!
+(set:$typeComment to (either:&quot;Do you really like boardgame...? Go out and find something fun!&quot;))</tw-passagedata><tw-passagedata pid="11" name="&lt;30 mins" tags="" position="82,610" size="100,100">#Result!
 (set: $time to &quot;&lt;30&quot;)
 You want to play with (text-colour:cyan)[$players] players, [$playerComment].
 The game is one of the (text-colour:cyan)[$type] games, [$typeComment]
 (set: $timeComment to &quot;take it easy!&quot;)And it always lasts (text-colour:cyan)[$time] mins, [$timeComment]
-
-
+(if: $type is &quot;random&quot;)[(set: $type to (either:&quot;strategy&quot;,&quot;thematic&quot;,&quot;family/party&quot;))]
+(if: $players is &quot;random&quot;)[(set: $players to (either:&quot;0&quot;,&quot;1-4&quot;,&quot;&gt;4&quot;))]
 According to the result, you might like this game:
-(if:$players is&quot;0&quot;)[(if:$type is &quot;strategy&quot;)[[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]]](else-if:$type is&quot;thematic&quot;)[[[The 7th Continent-&gt;https://www.boardgamegeek.com/boardgame/180263/7th-continent]]](else-if:$type is&quot;family/party&quot;)[[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspa]]](else:)[(either:[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]],[[The 7th Continent-&gt;https://www.boardgamegeek.com/boardgame/180263/7th-continent]],[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspan]])]](else-if:$players is&quot;1-4&quot;)[(if:$type is &quot;strategy&quot;)[[[Agricola-&gt;https://www.boardgamegeek.com/boardgame/31260/agricola]]](else-if:$type is&quot;thematic&quot;)[“It is difficult...How about play longer?”](else-if:$type is&quot;family/party&quot;)[[[Crokinole-&gt;https://www.boardgamegeek.com/boardgame/521/crokinole]]](else:)[(either:[[Agricola-&gt;https://www.boardgamegeek.com/boardgame/31260/agricola]],[[Crokinole-&gt;https://www.boardgamegeek.com/boardgame/521/crokinole]])]](else-if:$players is&quot;&gt;4&quot;)[(if:$type is &quot;strategy&quot;)[[[7 Wonders-&gt;https://www.boardgamegeek.com/boardgame/68448/7-wonder]]](else-if:$type is&quot;thematic&quot;)[&quot;It is difficult...How about play longer?&quot;](else-if:$type is&quot;family/party&quot;)[[[Codenames-&gt;https://www.boardgamegeek.com/boardgame/178900/codenames]]](else:)[(either:[[7 Wonders-&gt;https://www.boardgamegeek.com/boardgame/68448/7-wonder]],[[Codenames-&gt;https://www.boardgamegeek.com/boardgame/178900/codenames]])]](else:)[(either:[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]],[[The 7th Continent-&gt;https://www.boardgamegeek.com/boardgame/180263/7th-continent]],[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspan]])]</tw-passagedata><tw-passagedata pid="12" name="30-90 mins" tags="" position="248,611" size="100,100">#Result!
+(if:$players is&quot;0&quot;)[(if:$type is &quot;strategy&quot;)[[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]]](if:$type is&quot;thematic&quot;)[[[The 7th Continent-&gt;https://www.boardgamegeek.com/boardgame/180263/7th-continent]]](if:$type is&quot;family/party&quot;)[[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspa]]]](if:$players is&quot;1-4&quot;)[(if:$type is &quot;strategy&quot;)[[[Agricola-&gt;https://www.boardgamegeek.com/boardgame/31260/agricola]]](if:$type is&quot;thematic&quot;)[It is difficult...How about play longer?](if:$type is&quot;family/party&quot;)[[[Crokinole-&gt;https://www.boardgamegeek.com/boardgame/521/crokinole]]]](if:$players is&quot;&gt;4&quot;)[(if:$type is &quot;strategy&quot;)[[[7 Wonders-&gt;https://www.boardgamegeek.com/boardgame/68448/7-wonder]]](if:$type is&quot;thematic&quot;)[It is difficult...How about play longer?](if:$type is&quot;family/party&quot;)[[[Codenames-&gt;https://www.boardgamegeek.com/boardgame/178900/codenames]]]]</tw-passagedata><tw-passagedata pid="12" name="30-90 mins" tags="" position="248,611" size="100,100">#Result!
 (set: $time to &quot;30-90 mins &quot;)
 You want to play with (text-colour:cyan)[$players] players, [$playerComment].
 The game is one of the (text-colour:cyan)[$type] games,[$typeComment]
 (set: $timeComment to &quot;enjoy the charm of boardgames!&quot;)And it always lasts (text-colour:cyan)[$time] mins, [$timeComment]
-
+(if: $type is &quot;random&quot;)[(set: $type to (either:&quot;strategy&quot;,&quot;thematic&quot;,&quot;family/party&quot;))]
+(if: $players is &quot;random&quot;)[(set: $players to (either:&quot;0&quot;,&quot;1-4&quot;,&quot;&gt;4&quot;))]
 According to the result, you might like this game:
-(if:$players is&quot;0&quot;)[(if:$type is &quot;strategy&quot;)[[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]]](else-if:$type is&quot;thematic&quot;)[[[Tainted Grail: The Fall of Avalon-&gt;https://www.boardgamegeek.com/boardgame/264220/tainted-grail-fall-avalo]]](else-if:$type is&quot;family/party&quot;)[[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspa]]](else:)[(either:[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]],[[Tainted Grail: The Fall of Avalon-&gt;https://www.boardgamegeek.com/boardgame/264220/tainted-grail-fall-avalo]],[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspan]])]](else-if:$players is&quot;1-4&quot;)[(if:$type is &quot;strategy&quot;)[[[Concordia-&gt;https://www.boardgamegeek.com/boardgame/124361/concordia]]](else-if:$type is&quot;thematic&quot;)[[[Star Wars: Imperial Assault-&gt;https://www.boardgamegeek.com/boardgame/164153/star-wars-imperial-assault]]](else-if:$type is&quot;family/party&quot;)[[[Everdell-&gt;https://www.boardgamegeek.com/boardgame/199792/everdell]]](else:)[(either:[[Concordia-&gt;https://www.boardgamegeek.com/boardgame/124361/concordia]],[[Star Wars: Imperial Assault-&gt;https://www.boardgamegeek.com/boardgame/164153/star-wars-imperial-assault]],[[Everdell-&gt;https://www.boardgamegeek.com/boardgame/199792/everdell]])]](else-if:$players is&quot;&gt;4&quot;)[(if:$type is &quot;strategy&quot;)[[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]]](else-if:$type is&quot;thematic&quot;)[[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]]](else-if:$type is&quot;family/party&quot;)[[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]]](else:)[(either:[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]],[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]],[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]])]](else:)[(either:[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]],[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]],[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]])]</tw-passagedata><tw-passagedata pid="13" name="&gt;90 mins" tags="" position="425,600" size="100,100">#Result!
-(set: $time to &quot;30-90 mins &quot;)
+(if:$players is&quot;0&quot;)[(if:$type is &quot;strategy&quot;)[[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]]](else-if:$type is&quot;thematic&quot;)[[[Tainted Grail: The Fall of Avalon-&gt;https://www.boardgamegeek.com/boardgame/264220/tainted-grail-fall-avalo]]](else-if:$type is&quot;family/party&quot;)[[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspa]]](else:)[(either:[[A Feast for Odin-&gt;https://www.boardgamegeek.com/boardgame/177736/feast-odin]],[[Tainted Grail: The Fall of Avalon-&gt;https://www.boardgamegeek.com/boardgame/264220/tainted-grail-fall-avalo]],[[Wingspan-&gt;https://www.boardgamegeek.com/boardgame/266192/wingspan]])]](else-if:$players is&quot;1-4&quot;)[(if:$type is &quot;strategy&quot;)[[[Concordia-&gt;https://www.boardgamegeek.com/boardgame/124361/concordia]]](else-if:$type is&quot;thematic&quot;)[[[Star Wars: Imperial Assault-&gt;https://www.boardgamegeek.com/boardgame/164153/star-wars-imperial-assault]]](else-if:$type is&quot;family/party&quot;)[[[Everdell-&gt;https://www.boardgamegeek.com/boardgame/199792/everdell]]](else:)[(either:[[Concordia-&gt;https://www.boardgamegeek.com/boardgame/124361/concordia]],[[Star Wars: Imperial Assault-&gt;https://www.boardgamegeek.com/boardgame/164153/star-wars-imperial-assault]],[[Everdell-&gt;https://www.boardgamegeek.com/boardgame/199792/everdell]])]](else-if:$players is&quot;&gt;4&quot;)[(if:$type is &quot;strategy&quot;)[[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]]](else-if:$type is&quot;thematic&quot;)[[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]]](else-if:$type is&quot;family/party&quot;)[[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]]](else:)[(either:[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]],[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]],[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]])]](else:)[(either:[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]],[[Sherlock Holmes Consulting Detective: The Thames Murders &amp; Other Cases-&gt;https://www.boardgamegeek.com/boardgame/2511/sherlock-holmes-consulting-detective-thames-murde]],[[The Resistance: Avalon-&gt;https://www.boardgamegeek.com/boardgame/128882/resistance-avalon]])]</tw-passagedata><tw-passagedata pid="13" name="&gt;90 mins" tags="" position="424,600" size="100,100">#Result!
+(set: $time to &quot;&gt;90&quot;)
 You want to play with (text-colour:cyan)[$players] players, [$playerComment].
 The game is one of the (text-colour:cyan)[$type] games,[$typeComment]
 (set: $timeComment to &quot;enjoy the charm of boardgames!&quot;)And it always lasts (text-colour:cyan)[$time] mins, [$timeComment]
-
+(if: $type is &quot;random&quot;)[(set: $type to (either:&quot;strategy&quot;,&quot;thematic&quot;,&quot;family/party&quot;))]
+(if: $players is &quot;random&quot;)[(set: $players to (either:&quot;0&quot;,&quot;1-4&quot;,&quot;&gt;4&quot;))]
 According to the result, you might like this game:
 (if:$players is&quot;0&quot;)[(if:$type is &quot;strategy&quot;)[[[The Gallerist-&gt;https://www.boardgamegeek.com/boardgame/125153/gallerist]]](else-if:$type is&quot;thematic&quot;)[[[Mage Knight Board Game-&gt;https://www.boardgamegeek.com/boardgame/96848/mage-knight-board-game]]](else:)[(either:[[The Gallerist-&gt;https://www.boardgamegeek.com/boardgame/125153/gallerist]],[[Mage Knight Board Game-&gt;https://www.boardgamegeek.com/boardgame/96848/mage-knight-board-game]])]](else-if:$players is&quot;1-4&quot;)[(if:$type is &quot;strategy&quot;)[[[Dominant Species-&gt;https://www.boardgamegeek.com/boardgame/62219/dominant-species]]](else-if:$type is&quot;thematic&quot;)[[[Twilight Imperium: Fourth Edition-&gt;https://www.boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition]]](else:)[(either:[[Dominant Species-&gt;https://www.boardgamegeek.com/boardgame/62219/dominant-species]],[[[Twilight Imperium: Fourth Edition-&gt;https://www.boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition]])]](else-if:$players is&quot;&gt;4&quot;)[(if:$type is &quot;strategy&quot;)[[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]]](else-if:$type is&quot;thematic&quot;)[[[Eldritch Horror-&gt;https://www.boardgamegeek.com/boardgame/146021/eldritch-horror]]](else:)[(either:[[Caverna: The Cave Farmers-&gt;https://www.boardgamegeek.com/boardgame/102794/caverna-cave-farmers]],[[Eldritch Horror-&gt;https://www.boardgamegeek.com/boardgame/146021/eldritch-horror]])]](else:)[(either:[[Dominant Species-&gt;https://www.boardgamegeek.com/boardgame/62219/dominant-species]],[[[Twilight Imperium: Fourth Edition-&gt;https://www.boardgamegeek.com/boardgame/233078/twilight-imperium-fourth-edition]])]</tw-passagedata><tw-passagedata pid="14" name="Random time" tags="" position="599,602" size="100,100">#Result!
-(set: $time to &quot;random mins &quot;)
+(set: $time to (either:&quot;&lt;30&quot;,&quot;30-90&quot;,&quot;&gt;90&quot;))
 You want to play with (text-colour:cyan)[$players] players, [$playerComment].
 The game is one of the (text-colour:cyan)[$type] games,[$typeComment]
 (set: $timeComment to &quot;start with some eaiser games?&quot;)And it always lasts (text-colour:cyan)[$time] mins, [$timeComment]
-
+(if: $type is &quot;random&quot;)[(set: $type to (either:&quot;strategy&quot;,&quot;thematic&quot;,&quot;family/party&quot;))]
+(if: $players is &quot;random&quot;)[(set: $players to (either:&quot;0&quot;,&quot;1-4&quot;,&quot;&gt;4&quot;))]
 You might like this game:</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
